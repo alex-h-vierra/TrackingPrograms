@@ -2,10 +2,14 @@ import {app, BrowserWindow, ipcMain} from 'electron'
 import path from 'path'
 import { fileURLToPath } from 'url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-let parent
 app.disableHardwareAcceleration()
+let parent
 app.whenReady().then(async () => {
-    await import('./reload.cjs') 
+    try {
+        const {API} = await import('./reload.cjs') 
+    } catch (e) {
+        console.log('\nReload failed to load')
+    }
     parent = new BrowserWindow({
         alwaysOnTop: true,
         // devTools: true,
