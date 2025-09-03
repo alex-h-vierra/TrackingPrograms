@@ -22,30 +22,42 @@
 // })
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const nextbtn = document.getElementById('next');
-    const prevBtn = document.getElementById('prev');
-    const pokemonImage = document.getElementById('imageContainer');
-
-    // Read and parse image URLs from text file
-    const textData = await window.api.readTextFile(); // must return string
-    const imageURL = textData.trim().split('\n').map(line => JSON.parse(line));
-
-    let index = 0;
-
+    const nextbtn = document.getElementById('next')
+    const prevBtn = document.getElementById('prev')
+    const pokemonImage = document.getElementById('imageContainer')
+    const boxCount = document.getElementById('boxCount')
+    const textData = await window.api.readTextFile(); 
+    const imageURL = textData.trim().split('\n').map(line => JSON.parse(line))
+    let index = 0
     function showImage() {
-        const url = imageURL[index].images.small;
-        pokemonImage.setAttribute('href', url); // or setAttributeNS for compatibility
+        const url = imageURL[index].images.small
+        pokemonImage.setAttribute('href', url) 
     }
-
+    showImage()
     nextbtn.addEventListener('click', () => {
-        index = (index + 1) % imageURL.length;
-        showImage();
-    });
-
+        index = (index + 1) % imageURL.length
+        showImage()
+    })
     prevBtn.addEventListener('click', () => {
-        index = (index - 1 + imageURL.length) % imageURL.length;
-        showImage();
-    });
+        index = (index - 1 + imageURL.length) % imageURL.length
+        showImage()
+    })
+    boxCount.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            const boxInput = Number(boxCount.value.trim());
 
-    showImage();
-});
+            if (!isNaN(boxInput) && Number.isInteger(boxInput)) {
+                if (boxInput >= 1 && boxInput <= imageURL.length) {
+                    index = boxInput - 1; // adjust for 0-indexed array
+                    showImage();
+                } else {
+                    alert(`Please enter a number between 1 and ${imageURL.length}`);
+                }
+            } else {
+                alert('Please enter a valid integer');
+            }
+
+            boxCount.value = ''; // clear input after Enter
+        }       
+    });
+})
