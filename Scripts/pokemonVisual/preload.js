@@ -9,9 +9,9 @@ const { contextBridge, ipcRenderer } = require('electron')
   renderer process.
 */
 contextBridge.exposeInMainWorld('api', {
-  readTextFile: () => {
+  readTextFile: async () => {
     const filePath = path.join(__dirname, '..', 'TextFiles', 'sv8pt5.txt')
-    return fs.readFileSync(filePath, 'utf-8')
+    return fs.promises.readFile(filePath, 'utf-8')
   },
   resizeWindow: (width, height) => ipcRenderer.send('resize-window', width, height)
 })
