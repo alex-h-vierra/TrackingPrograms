@@ -107,10 +107,6 @@ body {
   z-index: 2;
 }
 .boxCount {
-  fill: rgb(46, 45, 45);
-  stroke: rgb(217, 219, 219);
-}
-.boxCount {
   position: absolute;
   top: 376px;    
   left: 125px;   
@@ -126,6 +122,8 @@ body {
   align-items: center;
   justify-content: center;
   padding: 0;
+  fill: rgb(150, 122, 48);
+  stroke: rgb(236, 236, 236);
 }
 .imageBorder {
   padding: 0;
