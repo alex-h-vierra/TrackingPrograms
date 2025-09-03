@@ -25,7 +25,7 @@ body {
 .nextButton:hover, .previousButton:hover {
   -webkit-app-region: no-drag;
   cursor: pointer;
-  fill: aliceblue;
+  fill: rgb(87, 59, 22);
 }
 .imageContainer {
   -webkit-app-region: drag;
@@ -51,12 +51,31 @@ body {
   justify-content: center;
   padding: 0;
   fill: rgb(150, 122, 48);
-  stroke: rgb(236, 236, 236);
+  stroke: rgb(158, 107, 30, 0.616);
+}
+.frequencyCount {
+  position: absolute;
+  top: 23px;    
+  left: 270px;   
+  width: 22px;   
+  height: 37px;  
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 12px;
+  padding: 0 4px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  fill: rgb(150, 122, 48);
+  stroke: rgb(158, 107, 30, 0.616);
 }
 .imageBorder {
   padding: 0;
   margin: 0;
-  stroke:rgb(56, 31, 10);
+  stroke:rgb(66, 38, 15);
   stroke-width: 10px;
   z-index: 3;
   fill: transparent

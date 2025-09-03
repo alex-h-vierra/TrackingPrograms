@@ -7,20 +7,27 @@ document.addEventListener('DOMContentLoaded', async () => {
     const prevBtn = document.getElementById('prev')
     const pokemonImage = document.getElementById('imageContainer')
     const boxCount = document.getElementById('boxCount')
+    const frequencyCount = document.getElementById('frequencyCount')
     const imageURL = textData.trim().split('\n').map(line => JSON.parse(line))
     let index = 0
     showImage()
+    showCount()
+    function showCount() {
+        frequencyCount.value = imageURL[index].frequency
+    }
     function showImage() {
-    const url = imageURL[index].images.small
+        const url = imageURL[index].images.small
         pokemonImage.setAttribute('href', url) 
     }
     nextbtn.addEventListener('click', () => {
         index = (index + 1) % imageURL.length
         showImage()
+        showCount()
     })
     prevBtn.addEventListener('click', () => {
         index = (index - 1 + imageURL.length) % imageURL.length
         showImage()
+        showCount()
     })
     boxCount.addEventListener('keydown', (event) => {
         if (event.key === 'Enter') {
@@ -30,6 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 if (boxInput >= 1 && boxInput <= imageURL.length) {
                     index = boxInput - 1
                     showImage()
+                    showCount()
                 } else {
                     alert(`Please enter a number between 1 and ${imageURL.length}`)
                 }
