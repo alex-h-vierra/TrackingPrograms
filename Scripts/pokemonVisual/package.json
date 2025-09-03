@@ -1,0 +1,24 @@
+{
+  "name": "main",
+  "version": "1.0.0",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "electron": "^37.2.4",
+    "electron-reload": "^2.0.0-alpha.1",
+    "electronmon": "^2.0.3",
+    "node-fetch": "^3.3.2"
+  },
+  "dependencies": {
+    "electron-updater": "^6.6.2",
+    "googleapis": "^154.0.0"
+  }
+}

@@ -1,0 +1,5 @@
+#Ignore Dependencies folders
+node_modules/
+#Ignore Environment files
+.env.local
+secrets.json
